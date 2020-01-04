@@ -14,7 +14,7 @@
         height: 50px;
         background-color: #e1017e;
     }
-
+    
     header .left {
         position: absolute;
         bottom: 0;
@@ -22,7 +22,7 @@
         width: 100px;
         height: 50px;
     }
-
+    
     header .left .arrow {
         position: absolute;
         bottom: 21px;
@@ -36,12 +36,12 @@
         -webkit-transition: 200ms;
         transition: 200ms;
     }
-
+    
     header .left .arrow.active {
         -webkit-transform: rotate(180deg);
         transform: rotate(180deg);
     }
-
+    
     header .left .city {
         position: relative;
         z-index: 2;
@@ -54,7 +54,7 @@
         color: #fff;
         text-align: left;
     }
-
+    
     header .center {
         position: relative;
         width: 100%;
@@ -64,7 +64,7 @@
         background-position: center center;
         background-repeat: no-repeat;
     }
-
+    
     header .right {
         position: absolute;
         bottom: 0;
@@ -76,7 +76,7 @@
         background-position: center center;
         background-repeat: no-repeat;
     }
-
+    
     nav {
         display: -webkit-box;
         display: -webkit-flex;
@@ -89,7 +89,7 @@
         height: 40px;
         background-color: #e1017e;
     }
-
+    
     nav .menu {
         -webkit-box-flex: 1;
         -webkit-flex: 1;
@@ -101,7 +101,7 @@
         color: #f973b8;
         text-align: center;
     }
-
+    
     nav .menu.selected {
         font-size: 14px;
         color: #fff;
@@ -235,10 +235,6 @@ function initLocation() {
         autoStop: true, // 定位到经纬度后，立即自动停止定位服务
         filter: 100000 // 基本无需处理位置更新的情况
     }, function(ret, err) {
-        if (err) {
-          console.log(err)
-          return
-        }
         if (ret.status) {
             // 根据经纬度获得城市名称
             fnGetCityNameFromLocation(ret);
@@ -402,5 +398,5 @@ function fnOpenPersonalCenterWin() {
     }
 }
 </script>
-</html>
 
+</html>

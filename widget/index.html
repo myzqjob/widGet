@@ -28,13 +28,13 @@ apiready = function() {
     // 初始化第三方推送模块，个推
     initPushGeTui();
 
-    // // 1. 根据UI架构设计（ui-architecture.xmind），打开首页Window
-    // // 2. 由于是次Window是首页窗口，通过设置参数slidBackEnabled，关闭iOS默认回划关闭窗口的功能
-    // api.openWin({
-    //     name: 'main',
-    //     url: './html/main.html',
-    //     slidBackEnabled: false
-    // });
+    // 1. 根据UI架构设计（ui-architecture.xmind），打开首页Window
+    // 2. 由于是次Window是首页窗口，通过设置参数slidBackEnabled，关闭iOS默认回划关闭窗口的功能
+    api.openWin({
+        name: 'main',
+        url: './html/main.html',
+        slidBackEnabled: false
+    });
 };
 
 // 初始化商品分类列表
@@ -110,14 +110,6 @@ function fnGetWareTypeList() {
         if (ret) {
             // 存储商品分类列表到本地
             $api.setStorage('wareTypeList', ret);
-
-            // 1. 根据UI架构设计（ui-architecture.xmind），打开首页Window
-            // 2. 由于是次Window是首页窗口，通过设置参数slidBackEnabled，关闭iOS默认回划关闭窗口的功能
-            api.openWin({
-                name: 'main',
-                url: './html/main.html',
-                slidBackEnabled: false
-            });
         } else {
             api.toast({
                 msg: '更新商品分类列表失败',
@@ -185,4 +177,5 @@ function fnParsePayLoad(payload_) {
     }
 }
 </script>
+
 </html>

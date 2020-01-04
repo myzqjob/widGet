@@ -13,7 +13,7 @@
         height: 100%;
         background-color: #eee;
     }
-
+    
     .list {
         display: block;
         position: relative;
@@ -21,7 +21,7 @@
         width: 100%;
         height: auto;
     }
-
+    
     .ware {
         position: relative;
         width: 100%;
@@ -29,7 +29,7 @@
         margin-bottom: 8px;
         background-color: #fff;
     }
-
+    
     .ware .content {
         position: relative;
         box-sizing: border-box;
@@ -38,7 +38,7 @@
         padding-top: 8px;
         padding-bottom: 8px;
     }
-
+    
     .ware .select {
         position: absolute;
         width: 16px;
@@ -51,11 +51,11 @@
         background-position: center center;
         z-index: 2;
     }
-
+    
     .ware .select-off {
         background-image: url(../image/select_off.png);
     }
-
+    
     .ware .thumbnail {
         position: absolute;
         top: 14px;
@@ -63,7 +63,7 @@
         height: 100px;
         width: 100px;
     }
-
+    
     .ware .info {
         position: relative;
         box-sizing: border-box;
@@ -72,7 +72,7 @@
         height: 114px;
         padding-right: 28px;
     }
-
+    
     .ware .info .name {
         width: 100%;
         height: 15px;
@@ -80,7 +80,7 @@
         margin-top: 14px;
         font-size: 15px;
     }
-
+    
     .ware .info .price-tag {
         margin-top: 10px;
         width: 100%;
@@ -88,16 +88,16 @@
         font-size: 12px;
         vertical-align: top;
     }
-
+    
     .ware .info .price-tag .price {
         color: #e3007f;
     }
-
+    
     .ware .info .price-tag .unit {
         font-size: 8px;
         color: #cbcbcb;
     }
-
+    
     .ware .control {
         position: absolute;
         width: 110px;
@@ -105,7 +105,7 @@
         top: 53px;
         right: 8px;
     }
-
+    
     .ware .control .minus {
         position: absolute;
         top: 0;
@@ -114,7 +114,7 @@
         height: 23px;
         z-index: 2;
     }
-
+    
     .ware .control .count {
         position: relative;
         top: 0;
@@ -130,7 +130,7 @@
         background-repeat: no-repeat;
         background-size: 48px 23px;
     }
-
+    
     .ware .control .add {
         position: absolute;
         top: 0;
@@ -139,7 +139,7 @@
         height: 23px;
         z-index: 2;
     }
-
+    
     .empty {
         display: none;
         position: absolute;
@@ -151,7 +151,7 @@
         background-size: 115px 190px;
         background-position: center 50px;
     }
-
+    
     .active {
         opacity: 0.7;
     }
@@ -216,15 +216,14 @@ function initEventListener() {
 }
 
 function getWareListFromDB() {
-    $db.select(function(ret,err){
-      // 购物车中有商品，则显示商品列表
-      if (ret && ret.data.length > 0) {
-          fnGetWareList(ret.data);
-      } else {
-          // 购物车中无商品，则提示用户去购物
-          fnShowWareList(false);
-      }
-    });
+    var ret = $db.select();
+    // 购物车中有商品，则显示商品列表
+    if (ret && ret.data.length > 0) {
+        fnGetWareList(ret.data);
+    } else {
+        // 购物车中无商品，则提示用户去购物
+        fnShowWareList(false);
+    }
 }
 
 function fnGetWareList(wareList_) {
@@ -445,4 +444,3 @@ function fnCloseWin() {
 </script>
 
 </html>
-
