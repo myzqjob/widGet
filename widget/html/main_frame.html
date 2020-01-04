@@ -14,12 +14,12 @@
         box-sizing: border-box;
         padding: 4px 10px;
     }
-
+    
     header .banner {
         width: 100%;
         height: 100%;
     }
-
+    
     section {
         position: relative;
         width: 100%;
@@ -27,7 +27,7 @@
         box-sizing: border-box;
         padding: 0 8px;
     }
-
+    
     .ware-0 {
         position: relative;
         width: 100%;
@@ -36,17 +36,17 @@
         padding-top: 8px;
         padding-bottom: 8px;
     }
-
+    
     .content {
         width: 100%;
         height: 100%;
     }
-
+    
     .ware-0 .thumbnail {
         height: 130px;
         width: 100%;
     }
-
+    
     .ware-0 .info {
         width: 100%;
         box-sizing: border-box;
@@ -55,22 +55,22 @@
         padding-left: 6px;
         border-bottom: 1px solid #d1d1d1;
     }
-
+    
     .ware-0 .info .price {
         font-size: 14px;
         color: #e3007f;
     }
-
+    
     .ware-0 .info .unit {
         font-size: 13px;
         color: #767676;
     }
-
+    
     .ware-0 .info .origin-price {
         font-size: 11px;
         color: #c0c0c0;
     }
-
+    
     .ware-1 {
         position: relative;
         width: 100%;
@@ -80,7 +80,7 @@
         padding-bottom: 15px;
         border-bottom: 1px solid #d1d1d1;
     }
-
+    
     .ware-1 .thumbnail {
         position: absolute;
         top: 20px;
@@ -88,7 +88,7 @@
         height: 100px;
         width: 100px;
     }
-
+    
     .ware-1 .info {
         width: 100%;
         height: 114px;
@@ -96,7 +96,7 @@
         padding-left: 112px;
         padding-right: 28px;
     }
-
+    
     .ware-1 .info .name {
         width: 100%;
         height: 15px;
@@ -104,7 +104,7 @@
         margin-top: 14px;
         font-size: 15px;
     }
-
+    
     .ware-1 .info .description {
         margin-top: 10px;
         width: 100%;
@@ -112,7 +112,7 @@
         font-size: 13px;
         color: #9d9d9d;
     }
-
+    
     .ware-1 .info .price-tag {
         margin-top: 10px;
         width: 100%;
@@ -120,16 +120,16 @@
         font-size: 12px;
         vertical-align: top;
     }
-
+    
     .ware-1 .info .price-tag .price {
         color: #e3007f;
     }
-
+    
     .ware-1 .info .price-tag .unit {
         font-size: 8px;
         color: #cbcbcb;
     }
-
+    
     .ware-1 .info .origin-price {
         margin-top: 5px;
         width: 100%;
@@ -137,27 +137,27 @@
         font-size: 10px;
         color: #d3d3d3;
     }
-
+    
     .ware .control {
         position: absolute;
         width: 110px;
         height: 23px;
         right: 8px;
     }
-
+    
     .ware-0 .control {
         bottom: 8px;
     }
-
+    
     .ware-1 .control {
         top: 90px;
     }
-
+    
     .ware .control .panel {
         display: none;
         height: 23px;
     }
-
+    
     .ware .control .minus {
         position: absolute;
         top: 0;
@@ -166,7 +166,7 @@
         height: 23px;
         z-index: 2;
     }
-
+    
     .ware .control .count {
         position: relative;
         top: 0;
@@ -182,7 +182,7 @@
         background-repeat: no-repeat;
         background-size: 48px 23px;
     }
-
+    
     .ware .control .add {
         position: absolute;
         top: 0;
@@ -191,7 +191,7 @@
         height: 23px;
         z-index: 2;
     }
-
+    
     .push-status {
         width: 100%;
         height: 40px;
@@ -201,7 +201,7 @@
         text-align: center;
         background-color: #fff;
     }
-
+    
     .active {
         opacity: 0.7;
     }
@@ -585,31 +585,19 @@ function fnMinus(wareId_) {
 
 // 显示商品在购物车中的数量
 function fnShowWareCountInShoppingCart(data_) {
-  // 遍历商品列表
-  var i = 0
-  if (data_.length) {
-    $db.select(data_[i].id, selectCallback);
-  }
-
-  function selectCallback(ret, err) {
-    if (ret && ret.data.length > 0) {
-        // 获得商品在购物车中的数量，更新数量和状态
-        var wareCount = ret.data[0].wareCount;
-        var count = $api.byId('count_' + data_[i].id);
-        var panel = $api.byId('panel_' + data_[i].id);
-        count.innerHTML = wareCount;
-        panel.style.display = (wareCount > 0) ? 'block' : 'none';
+    // 遍历商品列表
+    for (var i = 0; i < data_.length; i++) {
+        var result = $db.select(data_[i].id);
+        if (result && result.data.length > 0) {
+            // 获得商品在购物车中的数量，更新数量和状态
+            var wareCount = result.data[0].wareCount;
+            var count = $api.byId('count_' + data_[i].id);
+            var panel = $api.byId('panel_' + data_[i].id);
+            count.innerHTML = wareCount;
+            panel.style.display = (wareCount > 0) ? 'block' : 'none';
+        }
     }
-
-    ++ i
-
-    if (i < data_.length) {
-        $db.select(data_[i].id, selectCallback)
-    }
-  }
 }
 </script>
 
 </html>
-<script type="text/javascript" src="../web_adapter/script/hammer.min.js"></script>
-

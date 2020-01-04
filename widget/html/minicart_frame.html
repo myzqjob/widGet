@@ -13,7 +13,7 @@
         height: 100%;
         background-color: transparent;
     }
-
+    
     section {
         display: inline-block;
         box-sizing: border-box;
@@ -29,7 +29,7 @@
         background-size: auto 33px;
         background-position: right center;
     }
-
+    
     .count {
         display: none;
         box-sizing: border-box;
@@ -55,7 +55,6 @@
 </body>
 <script type="text/javascript" src="../script/api.js"></script>
 <script type="text/javascript" src="../script/db.js"></script>
-<script type="text/javascript" src="../web_adapter/script/hammer.min.js"></script>
 <script type="text/javascript">
 apiready = function() {
     initEventListenner();
@@ -76,13 +75,13 @@ function initEventListenner() {
         name: 'updateShoppingCart'
     }, function(ret, err) {
         if (ret) {
-            $db.select(ret.value.wareId, function (result, err) {
-              if (result && result.data.length > 0) {
-                  $db.update(ret.value.wareId, ret.value.wareCount, getWareListFromDB);
-              } else {
-                  $db.insert(ret.value.wareId, ret.value.wareCount, getWareListFromDB);
-              }
-            });
+            var result = $db.select(ret.value.wareId);
+            if (result && result.data.length > 0) {
+                $db.update(ret.value.wareId, ret.value.wareCount);
+            } else {
+                $db.insert(ret.value.wareId, ret.value.wareCount);
+            }
+            getWareListFromDB();
         } else {
             alert(JSON.stringify(err));
         }
@@ -100,11 +99,10 @@ function fnOpenShoppingCartWin() {
 
 // 获取购物车中的商品列表
 function getWareListFromDB() {
-    $db.select(function (ret, err) {
-      if (ret && ret.data.length > 0) {
-          fnGetWareList(ret.data);
-      }
-    });
+    var ret = $db.select();
+    if (ret && ret.data.length > 0) {
+        fnGetWareList(ret.data);
+    }
 }
 
 // 获取购物车中的商品详细信息，如当前价格
@@ -168,4 +166,3 @@ function fnGetShoppingCartAmount (data_) {
 </script>
 
 </html>
-
