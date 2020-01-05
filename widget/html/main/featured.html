@@ -1,0 +1,443 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,initial-scale=1.0"/>
+    <title>APP</title>
+    <link rel="stylesheet" type="text/css" href="../../css/api.css" />
+    <link rel="stylesheet" type="text/css" href="../../css/common.css" />
+    <style>
+        #main{
+
+        }
+        .broadcast{
+            border: #CDCDCD 1px solid;
+            border-bottom: none;
+            margin-bottom: 1em;
+            /*  */
+            /*display:none;*/
+        }
+        .broadcast_header{
+            border-bottom: #CDCDCD 1px solid;
+            position: relative;
+        }
+        .broadcast_header_left{
+            height: 55px;
+            width: 55px;
+            float: left;
+        }
+        .broadcast_header_left img{
+            height: 35px;
+            display: block;
+            border-radius: 18px;
+            margin: 10px auto 0 auto;
+        }
+        .broadcast_header_center{
+
+        }
+        .title{
+            font-size: 13px;
+            color: #58616D;
+            width: 100%;
+            padding-top: 11px;
+            display: block;
+        }
+        .brief{
+            font-size: 0.7em;
+            color: #BDBDBD;
+            width: 100%;
+            margin: 6px 0 3px 0;
+            display: block;
+        }
+        .type{
+            color: #FFF;
+            position: absolute;
+            right: 0;
+            top: 50%;
+            -webkit-transform: translateY(-50%);
+                    transform: translateY(-50%);
+            font-size: 10px;
+            padding: 4px 6px;
+        }
+        .broadcast .type.bro{
+            background-color: #CE55CF;
+        }
+        .broadcast_content_box{
+
+        }
+        .broadcast_content_left{
+            float: left;
+            width: 50%;
+            position: relative;
+        }
+        .broadcast_content_text_box{
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0,0,0,0.6);
+            display: -webkit-box;
+            display: -webkit-flex;
+            display: flex;
+            -webkit-box-orient: vertical;
+            box-orient: vertical;
+            -webkit-flex-direction: column;
+            flex-direction: column;
+        }
+        .broadcast_content_text_box .left_quotes,.broadcast_content_text_box .right_quotes{
+            display: block;
+            position: relative;
+            width: 100%;
+            height: 20px;
+        }
+        .broadcast_content_text_box .text{
+            -webkit-box-flex: 1;
+            -webkit-flex: 1;
+            flex: 1;
+            padding: 0 30px;
+            font-size: 10px;
+            line-height: 16px;
+            color: #FFF;
+            text-overflow: ellipsis;
+            overflow: hidden;
+            white-space: normal;
+        }
+        .broadcast_content_text_box .left_quotes img,.broadcast_content_text_box .right_quotes img{
+            position: absolute;
+            width: 15px;
+            height: 10px;
+        }
+        .broadcast_content_text_box .left_quotes img{
+            left: 12px;
+            top: 10px;
+        }
+        .broadcast_content_text_box .right_quotes img{
+            right: 12px;
+            bottom: 10px;
+        }
+        .broadcast_content_box img{
+            float: right;
+            width: 50%;
+        }
+        .broadcast_content_left .anti{
+            float: left;
+            width: 100%;
+            -webkit-transform: rotateY(180deg);
+                    transform: rotateY(180deg);
+        }
+
+        .discount{
+            border: #CDCDCD 1px solid;
+            margin-bottom: 1em;
+        }
+        .discount_header{
+            position: relative;
+        }
+        .discount_header_left{
+            height: 55px;
+            width: 82px;
+            float: left;
+        }
+        .discount_header_left img{
+            height: 35px;
+            display: block;
+            margin: 10px auto 0 auto;
+        }
+        .discount_header_center{
+
+        }
+        .discount .type.dis{
+            background-color: #FD5447;
+        }
+        .discount_content_box{
+            background-color: #FFF;
+        }
+        .discount_content_box .details{
+            float: left;
+            width: 50%;
+        }
+        .discount_content_box .details img{
+            display: block;
+            width: 100%;
+        }
+        .discount_content_box .details .spans{
+            height: 26px;
+            line-height: 26px;
+        }
+        .discount_content_box .spans .cp,.discount_content_box .spans .op{
+            line-height: 26px;
+            height: 26px;
+            float: left;
+            margin: 0 5px;
+        }
+        .discount_content_box .spans .cp{
+            color: #C40000;
+            font-size: 10px;
+        }
+        .discount_content_box .spans .op{
+            color: #999999;
+            font-size: 8px;
+            text-decoration: line-through;
+        }
+        .discount_shop{
+            background: #FAFAFA url(../../res/img/featured_dividing_line.png) center center no-repeat;
+            background-size: 1px 19px;
+        }
+        .discount_shop span{
+            font-size: 13px;
+            color: #6E6E6E;
+            width: 50%;
+            float: left;
+            height: 39px;
+            line-height: 39px;
+            text-align: center;
+        }
+
+
+        .new_pro{
+            border: #CDCDCD 1px solid;
+            margin-bottom: 1em;
+        }
+        .new_pro_header{
+            position: relative;
+        }
+        .new_pro_header_left{
+            height: 55px;
+            width: 82px;
+            float: left;
+        }
+        .new_pro_header_left img{
+            height: 35px;
+            display: block;
+            margin: 10px auto 0 auto;
+        }
+        .new_pro_header_center{
+
+        }
+        .new_pro .type.new{
+            background-color: #76C411;
+        }
+        .new_pro_content_box{
+            background-color: #FFF;
+        }
+        .new_pro_content_box img{
+            width: 100%;
+        }
+        .new_pro_shop{
+            background: #FAFAFA url(../../res/img/featured_dividing_line.png) center center no-repeat;
+            background-size: 1px 19px;
+        }
+        .new_pro_shop span{
+            font-size: 13px;
+            color: #6E6E6E;
+            width: 50%;
+            float: left;
+            height: 39px;
+            line-height: 39px;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <div id="wrap">
+        <div id="main">
+            <!-- 小广播部分 -->
+            <div class="broadcast" tapmode="tap-active" onclick="openCommon('broadcast1','Mango/桂七芒')">
+                <div class="broadcast_header clearfix">
+                    <div class="broadcast_header_left pull-left">
+                        <img src="../../image/yang.jpg" alt="">
+                    </div>
+                    <div class="broadcast_header_center pull-left">
+                        <span class="title">卖水果的杨先森</span>
+                        <span class="brief">1分钟前，发布了新广播</span>
+                    </div>
+                    <span class="type bro">小广播</span>
+                </div>
+                <div class="broadcast_content_box clearfix">
+                    <div class="broadcast_content_left">
+                        <img src="../../image/guiqimang2.jpg" class="anti" alt="">
+                        <div class="broadcast_content_text_box">
+                            <div class="left_quotes">
+                                <img src="../../res/img/tm_brand_view_card_dot_1.png" alt="">
+                            </div>
+                            <p class="text">
+                               田东的桂七芒之所以与众不同，得益于冬无严寒，夏无酷暑的右江河谷气候优势，这是大自然对田东万物的青睐，就连田东县城的版图形状也与芒果几乎一模一样，这预示着田东芒果之乡物华天成。
+                            </p>
+                            <div class="right_quotes">
+                                <img src="../../res/img/tm_brand_view_card_dot_2.png" alt="">
+                            </div>
+                        </div>
+                    </div>
+                    <img src="../../image/guiqimang2.jpg" alt="">
+                </div>
+            </div>
+            <div class="broadcast" tapmode="tap-active" onclick="openCommon('broadcast','Banana/芭蕉')">
+                <div class="broadcast_header clearfix">
+                    <div class="broadcast_header_left pull-left">
+                        <img src="../../image/xiangjiaowa.jpg" alt="">
+                    </div>
+                    <div class="broadcast_header_center pull-left">
+                        <span class="title">芭蕉仙子</span>
+                        <span class="brief">1小时前，发布了新广播</span>
+                    </div>
+                    <span class="type bro">小广播</span>
+                </div>
+                <div class="broadcast_content_box clearfix">
+                    <div class="broadcast_content_left">
+                        <img src="../../image/bajiao.jpg" class="anti" alt="">
+                        <div class="broadcast_content_text_box">
+                            <div class="left_quotes">
+                                <img src="../../res/img/tm_brand_view_card_dot_1.png" alt="">
+                            </div>
+                            <p class="text">
+                                芭蕉叶预防瘟疫已有几千年的历史，中草药可以就地取材，且现代医学的药理研究表明芭蕉叶是一种广谱抗菌抗病毒的药物，它对好多病毒和细菌都有抑制和杀伤作用，对呼吸系统疾病有一定的防治作用...
+                            </p>
+                            <div class="right_quotes">
+                                <img src="../../res/img/tm_brand_view_card_dot_2.png" alt="">
+                            </div>
+                        </div>
+                    </div>
+                    <img src="../../image/bajiao.jpg" alt="">
+                </div>
+            </div>
+            <div class="broadcast"  tapmode="tap-active" onclick="openCommon('broadcast2','Pitaya/火龙果')">
+                <div class="broadcast_header clearfix">
+                    <div class="broadcast_header_left pull-left">
+                        <img src="../../image/guoguologo.jpg" alt="">
+                    </div>
+                    <div class="broadcast_header_center pull-left">
+                        <span class="title">果果说</span>
+                        <span class="brief">2小时前，发布了新广播</span>
+                    </div>
+                    <span class="type bro">小广播</span>
+                </div>
+                <div class="broadcast_content_box clearfix">
+                    <div class="broadcast_content_left">
+                        <img src="../../image/huolongguo.jpg" class="anti" alt="">
+                        <div class="broadcast_content_text_box">
+                            <div class="left_quotes">
+                                <img src="../../res/img/tm_brand_view_card_dot_1.png" alt="">
+                            </div>
+                            <p class="text">
+                                火龙果营养丰富、功能独特，它含有一般植物少有的植物性白蛋白以及花青素，丰富的维生素和水溶性膳食纤维。火龙果属于凉性水果，在自然状态下，果实于夏秋成熟，味甜，多汁...
+                            </p>
+                            <div class="right_quotes">
+                                <img src="../../res/img/tm_brand_view_card_dot_2.png" alt="">
+                            </div>
+                        </div>
+                    </div>
+                    <img src="../../image/huolongguo.jpg" alt="">
+                </div>
+            </div>
+            <div class="broadcast" tapmode="tap-active" onclick="openCommon('broadcast3','Litchi chinensis Sonn/荔枝')">
+                <div class="broadcast_header clearfix">
+                    <div class="broadcast_header_left pull-left">
+                        <img src="../../image/guoguologo.jpg" alt="">
+                    </div>
+                    <div class="broadcast_header_center pull-left">
+                        <span class="title">果果说</span>
+                        <span class="brief">5小时前，发布了新广播</span>
+                    </div>
+                    <span class="type bro">小广播</span>
+                </div>
+                <div class="broadcast_content_box clearfix">
+                    <div class="broadcast_content_left">
+                        <img src="../../image/lizhi.jpg" class="anti" alt="">
+                        <div class="broadcast_content_text_box">
+                            <div class="left_quotes">
+                                <img src="../../res/img/tm_brand_view_card_dot_1.png" alt="">
+                            </div>
+                            <p class="text">
+                                荔枝味甘、酸、性温，入心、脾、肝经；可止呃逆，止腹泻，是顽固性呃逆及五更泻者的食疗佳品，同时有补脑健身，开胃益脾，有促进食欲之功效。因性热，多食易上火。荔枝木材坚实，纹理雅致，耐腐，历来为上等名材...
+                            </p>
+                            <div class="right_quotes">
+                                <img src="../../res/img/tm_brand_view_card_dot_2.png" alt="">
+                            </div>
+                        </div>
+                    </div>
+                    <img src="../../image/lizhi.jpg" alt="">
+                </div>
+            </div>
+            <!-- 小广播部分 end -->
+            <!-- 优惠部分 -->
+            <div class="discount" tapmode="tap-active" data-url="http://www.yhd.com/brand/974152/" data-title="一号生鲜" onclick="toDetail(this);">
+                <div class="discount_header clearfix">
+                    <div class="discount_header_left pull-left">
+                        <img src="../../image/yihaologo.png" alt="">
+                    </div>
+                    <div class="discount_header_center pull-left">
+                        <span class="title">一号生鲜</span>
+                        <span class="brief">13分钟前，有水果开始促销</span>
+                    </div>
+                    <span class="type dis">人气推荐</span>
+                </div>
+                <div class="discount_content_box clearfix">
+                    <div class="details">
+                        <img src="../../image/yingtao.jpg" alt="">
+                        <div class="spans">
+                            <span class="cp">￥120.00</span>
+                            <span class="op">￥128.00</span>
+                        </div>
+                    </div>
+                    <div class="details">
+                        <img src="../../image/qiyiguo.jpg" alt="">
+                        <div class="spans">
+                            <span class="cp">￥25.00</span>
+                            <span class="op">30.00</span>
+                        </div>
+                    </div>
+                    <div class="details">
+                        <img src="../../image/shengnvguo.jpg" alt="">
+                        <div class="spans">
+                            <span class="cp">￥6.5</span>
+                            <span class="op">7.00</span>
+                        </div>
+                    </div>
+                    <div class="details">
+                        <img src="../../image/shuijingli.jpg" alt="">
+                        <div class="spans">
+                            <span class="cp">￥5.00</span>
+                            <span class="op">6.00</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="discount_shop clearfix">
+                    <span>进入一号生鲜</span>
+                    <span>更多优惠</span>
+                </div>
+            </div>
+            <!-- 优惠部分 end -->
+            <div class="new_pro" tapmode="tap-active" data-url="http://www.rx258.com/" data-title="容县沙田柚" onclick="toDetail(this);">
+                <div class="new_pro_header clearfix">
+                    <div class="new_pro_header_left pull-left">
+                        <img src="../../image/guoguo.png" alt="">
+                    </div>
+                    <div class="new_pro_header_center pull-left">
+                        <span class="title">容县沙田柚</span>
+                        <span class="brief">13分钟前，有水果全新上架</span>
+                    </div>
+                    <span class="type new">上新啦</span>
+                </div>
+                <div class="new_pro_content_box clearfix">
+                    <img src="../../image/shatianyou.jpg" alt=""> 
+                </div>
+                <div class="new_pro_shop clearfix">
+                    <span>进入沙田柚基地</span>
+                    <span>更多新鲜水果</span>
+                </div>
+            </div>
+            <!-- 新品上架 -->
+
+            <!-- 新品上架 end -->
+        </div>
+    </div>
+</body>
+<script type="text/javascript" src="../../script/api.js"></script>
+<script type="text/javascript" src="../../script/common.js"></script>
+<script type="text/javascript">
+    apiready = function(){
+
+    };
+</script>
+</html>

@@ -2,6 +2,7 @@
  * APICloud JavaScript Library
  * Copyright (c) 2014 apicloud.com
  */
+ /*api.js 提供最基础的 JavaScript 方法*/
 (function(window){
     var u = {};
     var isAndroid = (/android/gi).test(navigator.appVersion);
